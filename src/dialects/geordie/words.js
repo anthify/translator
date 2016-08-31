@@ -53,5 +53,8 @@ module.exports = {
   "drunk" : ["mortal", "monged", "shit faced", "rat arsed"],
   "you" : "ye",
   "i'm" : "am",
-  "was" : "wer"
+  "was" : "wer",
+  'newcastle' : 'toon',
+  'over' : 'owa',
+  "large" : ["walla", "mass-i"],
 }

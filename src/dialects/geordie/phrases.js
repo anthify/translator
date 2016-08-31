@@ -4,5 +4,6 @@ module.exports = {
   "of course" : "wey aye",
   "come on" : "howay",
   "no problem" : ["nee bosh", "nee botha"],
-  "with us" : "with wer"
+  "with us" : "with wer",
+  "very very" : "geet",
 }
