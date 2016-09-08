@@ -24,9 +24,17 @@ describe('Translator', function() {
     expect(subject('hello', {})).to.be.an('error');
   });
 
-  it('should return fully translated string', function() {
+  it('should return string', function() {
     var message = 'hello, how are you doing? are you doing anything tonight?';
     var subject = Translator(message, Words, Phrases);
+    expect(subject).to.be.a('string');
     console.log(subject);
+    var subject = Translator(subject, Words, Phrases, true);
+    console.log(subject);
+    expect(subject).to.be.a('string');
   });
+
+
+
+
 })

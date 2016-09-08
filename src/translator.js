@@ -17,7 +17,8 @@ if (typeof phrases !== 'object') {
 }
 
 if (reverse) {
-
+  phrases = ReverseTranslation(phrases);
+  words = ReverseTranslation(words);
 }
 
 message = message.toLowerCase();
