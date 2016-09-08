@@ -34,7 +34,4 @@ describe('Translator', function() {
     expect(subject).to.be.a('string');
   });
 
-
-
-
 })
