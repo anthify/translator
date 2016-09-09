@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var Translator = require('../src/translator.js');
+var Translator = require('../index.js');
 var Words = {'hello': 'alreet', 'bye': 'tra'};
 var Phrases = {'hello how are you doing' : 'areet wor kid'}
 
