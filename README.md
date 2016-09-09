@@ -1,4 +1,4 @@
-# transaltor
+# translator
 A word and phrase translation method.
 
     var Translator = require('src/translator.js');
