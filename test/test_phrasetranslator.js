@@ -1,6 +1,12 @@
 var expect = require('chai').expect;
 var PhraseTranslator = require('../src/phrase_translator.js');
-var Phrases = require('../src/dialects/geordie/phrases.js');
+var Phrases = {
+  'of course' : 'wey aye',
+  'no problem' : 'ne botha',
+  'how are you doing' : 'ya areet, wor kid',
+  'come on' : 'howay',
+  'with us' : 'with wer'
+};
 
 describe('PhraseTranslator', function() {
   it('return error if no message', function() {

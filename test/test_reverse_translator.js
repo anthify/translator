@@ -1,7 +1,5 @@
 var expect = require('chai').expect;
 var ReverseTranslator = require('../src/reverse_translator.js');
-var Words = require('../src/dialects/geordie/words.js');
-var Phrases = require('../src/dialects/geordie/phrases.js');
 
 describe('ReverseTranslator', function() {
   it('return an object', function() {

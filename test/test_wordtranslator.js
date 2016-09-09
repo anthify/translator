@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var WordTranslator = require('../src/word_translator.js');
-var Words = require('../src/dialects/geordie/words.js');
+var Words = {'thanks' : 'ta', 'was' : 'wer'};
 
 describe('WordTranslator', function() {
   it('return error if no message', function() {

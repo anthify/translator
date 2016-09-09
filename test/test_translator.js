@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var Translator = require('../src/translator.js');
-var Words = require('../src/dialects/geordie/words.js');
-var Phrases = require('../src/dialects/geordie/phrases.js');
+var Words = {'hello': 'alreet', 'bye': 'tra'};
+var Phrases = {'hello how are you doing' : 'areet wor kid'}
 
 describe('Translator', function() {
   it('return a string', function() {
