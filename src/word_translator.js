@@ -8,7 +8,7 @@ function WordTranslator(message, words) {
     return new Error('No language or dialect provided');
   }
 
-  Object.keys(words).map(function(word) {
+  Object.keys(words).forEach(function(word) {
     var matchWord = new RegExp('\\b' + word + '\\b', "g");
     if ( matchWord.test(message) ) {
       if ( typeof words[word] === 'object' ) {

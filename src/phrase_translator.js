@@ -7,7 +7,7 @@ function PhraseTranslator(message, phrases) {
     return new Error('No phrases provided');
   }
 
-  Object.keys(phrases).map(function(phrase) {
+  Object.keys(phrases).forEach(function(phrase) {
     var phraseMatch = new RegExp('\\b' + phrase + '\\b', "g");
     if (phraseMatch.test(message)) {
       if (typeof phrases[phrase] === 'object') {
