@@ -21,6 +21,15 @@ if (reverse) {
   words = ReverseTranslation(words);
 }
 
+var translation = {
+  message: message,
+  translation: message,
+  translations: [],
+  word_count: message.split(' ').length,
+  percentage: 0
+};
+
+// Todo : Refactor this bit, perhaps compose these functions...
 message = message.toLowerCase();
 message = PhraseTranslator(message, phrases);
 message = WordTranslator(message, words);

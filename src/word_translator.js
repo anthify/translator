@@ -1,6 +1,9 @@
-function WordTranslator(message, words) {
+function WordTranslator(translation, words) {
+  if ( !translation ) {
+    return new Error('No translation object provided');
+  }
 
-  if ( typeof message !== 'string' ) {
+  if ( typeof translation.message !== 'string' ) {
     return new Error('Nothing to translate');
   }
 
@@ -10,17 +13,14 @@ function WordTranslator(message, words) {
 
   Object.keys(words).forEach(function(word) {
     var matchWord = new RegExp('\\b' + word + '\\b', "g");
-    if ( matchWord.test(message) ) {
-      if ( typeof words[word] === 'object' ) {
+    if ( matchWord.test(translation.message) ) {
         var choice = Math.floor(Math.random() * words[word].length);
-        message = message.replace(matchWord, words[word][choice]);
-      } else {
-        message = message.replace(matchWord, words[word]);
-      }
+        translation.translation = translation.translation.replace(matchWord, words[word][choice].word);
+        translation.translations.push(words[word][choice]);
     }
   });
 
-  return message;
+  return translation;
 }
 
 module.exports = WordTranslator;
