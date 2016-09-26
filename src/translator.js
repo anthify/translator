@@ -27,13 +27,15 @@ var translation = {
   translations: [],
   word_count: message.split(' ').length,
   percentage: 0
+  words: words,
+  phrases: phrases
 };
 
 // Todo : Refactor this bit, perhaps compose these functions...
-message = message.toLowerCase();
-message = PhraseTranslator(message, phrases);
-message = WordTranslator(message, words);
-message = CleanTranslation(message);
+// message = message.toLowerCase();
+// message = PhraseTranslator(message, phrases);
+// message = WordTranslator(message, words);
+// message = CleanTranslation(message);
 
 return message;
 

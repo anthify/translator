@@ -14,7 +14,8 @@ function translationObj(message) {
   this.translation = message,
   this.translations = [],
   this.word_count = message.split(' ').length,
-  this.percentage = 0
+  this.percentage = 0,
+  this.phrases = Phrases
 };
 
 describe('PhraseTranslator', function() {
@@ -30,29 +31,29 @@ describe('PhraseTranslator', function() {
   })
 
   it('should return a string', function() {
-    var subject = PhraseTranslator(new translationObj('of course'), Phrases);
+    var subject = PhraseTranslator(new translationObj('of course'));
     expect(subject.translation).to.be.a('string');
     expect(subject.translation).to.equal('w~e~y~ ~a~y~e');
   });
 
   it('should return a string when array item matches', function() {
-    var subject = PhraseTranslator(new translationObj('no problem'), Phrases);
+    var subject = PhraseTranslator(new translationObj('no problem'));
     expect(subject.translation).to.be.a('string');
   });
 
   it('should return a string with tilde symbols obscuring the message', function() {
-    var subject = PhraseTranslator(new translationObj('no problem'), Phrases);
+    var subject = PhraseTranslator(new translationObj('no problem'));
     expect(subject.translation.indexOf('~')).to.equal(1);
   });
 
   it('should translate multiple instances of phrase', function() {
     var trans = new translationObj('hello, how are you doing? sir come on with us.')
-    var subject = PhraseTranslator(trans, Phrases)
+    var subject = PhraseTranslator(trans)
     expect(subject.translation).to.equal('hello, y~a~ ~a~r~e~e~t~,~ ~w~o~r~ ~k~i~d? sir h~o~w~a~y w~i~t~h~ ~w~e~r.');
   });
 
   it('should return one of the possible phrase translations', function() {
-    var subject = PhraseTranslator(new translationObj('good bye'), Phrases);
+    var subject = PhraseTranslator(new translationObj('good bye'));
     expect(subject.translation).to.be.oneOf([
       't~r~a~ ~n~o~w',
       't~a~ ~t~a'

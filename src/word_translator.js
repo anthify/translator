@@ -1,26 +1,26 @@
-function WordTranslator(translation, words) {
-  if ( !translation ) {
+function WordTranslator(t) {
+  if ( !t ) {
     return new Error('No translation object provided');
   }
 
-  if ( typeof translation.message !== 'string' ) {
+  if ( typeof t.message !== 'string' ) {
     return new Error('Nothing to translate');
   }
 
-  if ( typeof words !== 'object' ) {
+  if ( typeof t.words !== 'object' ) {
     return new Error('No language or dialect provided');
   }
 
-  Object.keys(words).forEach(function(word) {
+  Object.keys(t.words).forEach(function(word) {
     var matchWord = new RegExp('\\b' + word + '\\b', "g");
-    if ( matchWord.test(translation.message) ) {
-        var choice = Math.floor(Math.random() * words[word].length);
-        translation.translation = translation.translation.replace(matchWord, words[word][choice].word);
-        translation.translations.push(words[word][choice]);
+    if ( matchWord.test(t.message) ) {
+        var choice = Math.floor(Math.random() * t.words[word].length);
+        t.translation = t.translation.replace(matchWord, t.words[word][choice].translation);
+        t.translations.push(t.words[word][choice]);
     }
   });
 
-  return translation;
+  return t;
 }
 
 module.exports = WordTranslator;

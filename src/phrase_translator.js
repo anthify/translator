@@ -1,24 +1,25 @@
-function PhraseTranslator(translation, phrases) {
-  if ( !translation ) {
+function PhraseTranslator(t) {
+  if ( !t ) {
     return new Error('No translation object provided');
   }
-  if ( typeof translation.message !== 'string' ) {
+  if ( typeof t.message !== 'string' ) {
     return new Error('No message provided');
   }
 
-  if ( typeof phrases !== 'object' ) {
+  if ( typeof t.phrases !== 'object' ) {
     return new Error('No phrases provided');
   }
 
-  Object.keys(phrases).forEach(function(phrase) {
+  Object.keys(t.phrases).forEach(function(phrase) {
     var phraseMatch = new RegExp('\\b' + phrase + '\\b', "g");
-    if (phraseMatch.test(translation.message)) {
-        var choice = Math.floor(Math.random() * phrases[phrase].length);
-        translation.translation = translation.translation.replace(phraseMatch, phrases[phrase][choice].translation.split('').join('~'));
-        translation.translations.push(phrases[phrase][choice]);
+    if (phraseMatch.test(t.message)) {
+        var choice = Math.floor(Math.random() * t.phrases[phrase].length);
+        t.translation = t.translation.replace(phraseMatch, t.phrases[phrase][choice].translation.split('').join('~'));
+        t.translations.push(t.phrases[phrase][choice]);
     }
   });
-  return translation;
+  
+  return t;
 }
 
 module.exports = PhraseTranslator;
