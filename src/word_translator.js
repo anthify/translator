@@ -2,11 +2,9 @@ function WordTranslator(t) {
   if ( !t ) {
     return new Error('No translation object provided');
   }
-
   if ( typeof t.message !== 'string' ) {
     return new Error('Nothing to translate');
   }
-
   if ( typeof t.words !== 'object' ) {
     return new Error('No language or dialect provided');
   }

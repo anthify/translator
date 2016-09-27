@@ -5,7 +5,6 @@ function PhraseTranslator(t) {
   if ( typeof t.message !== 'string' ) {
     return new Error('No message provided');
   }
-
   if ( typeof t.phrases !== 'object' ) {
     return new Error('No phrases provided');
   }
@@ -18,7 +17,7 @@ function PhraseTranslator(t) {
         t.translations.push(t.phrases[phrase][choice]);
     }
   });
-  
+
   return t;
 }
 
