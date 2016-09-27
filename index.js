@@ -1,9 +1,12 @@
-var WordTranslator = require('./src/word_translator.js');
-var PhraseTranslator = require('./src/phrase_translator.js');
-var CleanTranslation = require('./src/clean_translation.js');
-var ReverseTranslation = require('./src/reverse_translator.js');
+const WordTranslator = require('./src/word_translator.js');
+const PhraseTranslator = require('./src/phrase_translator.js');
+const CleanTranslation = require('./src/clean_translation.js');
+const ReverseTranslation = require('./src/reverse_translator.js');
+const prep = require('./src/prep.js');
+const pipe = require('./src/pipe.js');
 
-var Translator = function(message, words, phrases, reverse) {
+
+const Translator = function(message, words, phrases, reverse) {
 if ( typeof message !== 'string' ) {
   return new Error({message: 'Nothing to translate'});
 }
@@ -21,12 +24,19 @@ if (reverse) {
   words = ReverseTranslation(words);
 }
 
-message = message.toLowerCase();
-message = PhraseTranslator(message, phrases);
-message = WordTranslator(message, words);
-message = CleanTranslation(message);
+let translation = {
+  message: message,
+  translation: message,
+  translations: [],
+  word_count: message.split(' ').length,
+  percentage: 0,
+  words: words,
+  phrases: phrases
+};
 
-return message;
+const translate = pipe(prep, PhraseTranslator, WordTranslator, CleanTranslation);
+const result = translate(translation)
+return result;
 
 };
 

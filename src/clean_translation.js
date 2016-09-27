@@ -1,11 +1,11 @@
-var CleanTranslation = function(message) {
-  message = message.trim();
+var CleanTranslation = function(t) {
+  t.translation = t.translation.trim();
   var tildeMatch = new RegExp('~', 'g');
-  if ( tildeMatch.test(message) ) {
-    message = message.replace(tildeMatch, '');
+  if ( tildeMatch.test(t.translation) ) {
+    t.translation = t.translation.replace(tildeMatch, '');
   }
 
-  return message;
+  return t;
 }
 
 module.exports = CleanTranslation;
