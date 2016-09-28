@@ -28,10 +28,14 @@ describe('Translator', function() {
     var message = 'hello, how are you doing? are you doing anything tonight?';
     var subject = Translator(message, Words, Phrases);
     expect(subject.translation).to.be.a('string');
-    // console.log(subject);
-    // var subject = Translator(subject, Words, Phrases, true);
-    // console.log(subject);
-    // expect(subject).to.be.a('string');
+    expect(subject.translation).to.equal('alreet, how are you doing? are you doing anything tonight?');
+    expect(subject.percentage()).to.equal(10);
   });
 
+  it('should return reversed translation', function() {
+    var message = 'alreet? alreet! tra!! areet wor kid?';
+    var subject = Translator(message, Words, Phrases, true);
+    expect(subject.translation).to.equal('hello? hello! bye!! hello how are you doing?');
+    expect(subject.percentage()).to.equal(100);
+  });
 })

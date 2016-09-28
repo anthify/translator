@@ -4,7 +4,8 @@ var ReverseTranslator = require('../src/reverse_translator.js');
 describe('ReverseTranslator', function() {
   it('return an object', function() {
     var subject = ReverseTranslator;
-    expect(subject({'hello' : 'areet'})).to.be.an('object');
+    let hello = {'hello' : [{translation: 'areet'}]}
+    expect(subject(hello)).to.be.an('object');
   });
 
   it('return error if object is empty', function() {
@@ -43,49 +44,49 @@ describe('ReverseTranslator', function() {
 
     var subject = ReverseTranslator;
     var someWords = {
-      'hello' : 'areet',
-      'yes' : 'aye',
-      'bye' : 'tra'
+      'hello' : [{translation: 'areet'}],
+      'yes' : [{translation: 'aye'}],
+      'bye' : [{translation: 'tra'}]
     };
 
     var someWordsReversed = {
-      'areet' : 'hello',
-      'aye' : 'yes',
-      'tra' : 'bye'
+      'areet' : [{translation: 'hello'}],
+      'aye' : [{translation: 'yes'}],
+      'tra' : [{translation: 'bye'}]
     };
 
     var result = subject(someWords);
 
-    expect(result.aye).to.equal('yes');
-    expect(result.tra).to.equal('bye');
-    expect(result.areet).to.equal('hello');
+    expect(result.aye[0].translation).to.equal('yes');
+    expect(result.tra[0].translation).to.equal('bye');
+    expect(result.areet[0].translation).to.equal('hello');
 
   });
 
   it('should return reversed object for array values', function() {
     var subject = ReverseTranslator;
     var someWords = {
-      'hello' : ['areet', 'alreet', 'how'],
-      'alright' : 'areet',
-      'bye' : 'tra',
-      'laters' : 'tra',
-      'seeya' : 'tra'
+      'hello' : [{translation: 'areet'}, {translation: 'alreet'}, {translation: 'how'}],
+      'alright' : [{translation: 'areet'}],
+      'bye' : [{translation: 'tra'}],
+      'laters' : [{translation: 'tra'}],
+      'seeya' : [{translation: 'tra'}]
     };
 
     var someWordsReversed = {
-      'areet' : ['hello', 'alright'],
-      'alreet' : 'hello',
-      'how' : 'hello',
-      'tra' : 'bye',
+      'areet' : [{translation: 'hello'}, {translation: 'alright'}],
+      'alreet' : [{translation: 'hello'}],
+      'how' : [{translation: 'hello'}],
+      'tra' : [{translation: 'bye'}],
     }
 
     var result = subject(someWords);
-    expect(result["areet"][0]).to.equal(someWordsReversed.areet[0])
-    expect(result["areet"][1]).to.equal(someWordsReversed.areet[1])
-    expect(result["alreet"]).to.equal('hello');
-    expect(result["how"]).to.equal('hello');
-    expect(result["tra"][0]).to.equal('bye');
-    expect(result["tra"][1]).to.equal('laters');
-    expect(result["tra"][2]).to.equal('seeya');
+    expect(result["areet"][0].translation).to.equal(someWordsReversed.areet[0].translation)
+    expect(result["areet"][1].translation).to.equal(someWordsReversed.areet[1].translation)
+    expect(result["alreet"][0].translation).to.equal('hello');
+    expect(result["how"][0].translation).to.equal('hello');
+    expect(result["tra"][0].translation).to.equal('bye');
+    expect(result["tra"][1].translation).to.equal('laters');
+    expect(result["tra"][2].translation).to.equal('seeya');
   });
 })

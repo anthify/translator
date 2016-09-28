@@ -26,30 +26,18 @@ function ReverseTranslator(dictionary) {
   }
 
   var reversedDictionary = Object.keys(dictionary).reduce(function(previous, current) {
-    if (typeof dictionary[current] === 'string') {
-      if (!previous[dictionary[current]]) {
-        previous[dictionary[current]] = current;
-      } else if (typeof previous[dictionary[current]] === 'object') {
-        previous[dictionary[current]].push(current);
-      } else if (typeof previous[dictionary[current]] === 'string') {
-        previous[dictionary[current]] = [previous[dictionary[current]], current]
-      }
-    } else if (typeof dictionary[current] === 'object') {
       dictionary[current].forEach(function(value, index) {
-        if (!previous[dictionary[current][index]]) {
-          previous[dictionary[current][index]] = current;
-        }
-        else if (typeof previous[dictionary[current][index]] === 'object') {
-          previous[dictionary[current][index]].push(current);
-        }
-        else if (typeof previous[dictionary[current][index]] === 'string') {
-          previous[dictionary[current][index]] = [previous[dictionary[current][index]], current]
+        if(!previous[dictionary[current][index].translation]) {
+          previous[dictionary[current][index].translation] = [{
+            translation: current
+          }]
+        } else {
+          previous[dictionary[current][index].translation].push({
+            translation: current
+          })
         }
       })
-    }
-
     return previous;
-
   }, {});
 
   return reversedDictionary;
