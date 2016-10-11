@@ -38,4 +38,11 @@ describe('Translator', function() {
     expect(subject.translation).to.equal('hello? hello! bye!! hello how are you doing?');
     expect(subject.percentage()).to.equal(100);
   });
+
+  it('should return zero percentage', function() {
+    var message = "bonjour matey, how art thoust?";
+    var subject = Translator(message, Words, Phrases);
+    expect(subject.translation).to.equal(message);
+    expect(subject.percentage()).to.equal(0);
+  });
 })
